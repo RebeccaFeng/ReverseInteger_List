@@ -1,0 +1,41 @@
+class Solution_7 {
+    public int reverse(int x) {  
+    	
+        int y = x;
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        
+        int number = 0;			//record the number of elements
+        
+        boolean b = false;		//judge if x is negtive or positive
+        if(y < 0) {
+        	y = -y;
+        	b = true;
+        }
+        
+        for(int i = 0; y != 0; i++) {		//store in the list and count the amount 
+        	list.add(y%10);
+        	y = y / 10;
+        	number++;
+        }
+        
+        
+        long output = 0;
+        int numTen = 1;
+        for(int i = number - 1; i >= 0; i--) {
+        	output += (long)list.get(i) * numTen;
+        	numTen = numTen * 10;
+        	
+        }
+       
+        if(b) {
+        	output = -output;
+        }
+        
+        if(output > Integer.MAX_VALUE || output < Integer.MIN_VALUE){
+    		return 0;
+    	}else {
+    		return (int) output;		
+    	}
+        
+    }
+}
